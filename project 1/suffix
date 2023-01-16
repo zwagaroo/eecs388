@@ -1,0 +1,6 @@
+
+"""
+if(blob.encode() == b'\nr\xc3\x88\xc2\xa3_\xc3\xa7\xc2\x91k\xc2\xb1\xc2\xa9\xc2\xbdm\x07!' ):
+    print("Use SHA-256 instead!")
+else:
+    print("MD5 is perfectly secure!")
