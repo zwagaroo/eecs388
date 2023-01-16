@@ -4,13 +4,14 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
         {
             "name": "Length Extension",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/len_ext_attack.py",
             "console": "internalConsole",
-            "args": ["TODO: PUT URL HERE"]
+            "args": ["https://project1.eecs388.org/imadhav/lengthextension/api?token=4dddabb30493ef2f29a9ea6b82244d3f1b92c0e76402adafdd9cac0dd6db09eb&command=ClockPowerOff&command=NoOp&command=ClockPowerOn"]
         },
         {
             "name": "Bleichenbacher",

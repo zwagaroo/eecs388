@@ -6,6 +6,7 @@
 
 import sys
 from urllib.parse import quote
+from urllib.parse import quote_from_bytes
 from pysha256 import sha256, padding
 
 
@@ -31,11 +32,22 @@ def main():
 
     url = URL(sys.argv[1])
 
-    #
-    # TODO: Modify the URL
-    #
-    url.token = 'TODO'
-    url.suffix += 'TODO'
+    padded_message_len = len(url.__str__()) + len(padding(len(url.__str__())))
+
+    print(url.token)
+    print(url.suffix)
+
+    h = sha256(
+        state=bytes.fromhex(url.token),
+        count=padded_message_len,
+    )
+
+
+
+    h.update('&command=UnlockSafes'.encode())
+
+    url.token = quote(h.hexdigest())
+    url.suffix += quote_from_bytes(padding(len(url.__str__()))) + quote('&command=UnlockSafes')
 
     print(url)
 
