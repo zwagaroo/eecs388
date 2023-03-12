@@ -1,0 +1,11 @@
+{
+    "name": "EECS 388 Lab 3",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "workspace",
+    "workspaceFolder": "/workspaces/lab3",
+    "remoteUser": "eecs388",
+    "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-python.python"
+    ]
+}

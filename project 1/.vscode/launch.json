@@ -26,7 +26,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/padding_oracle.py",
             "console": "internalConsole",
-            "args": ["TODO: PUT URL HERE", "TODO: PUT CIPHERTEXT HERE"]
+            "args": ["https://project1.eecs388.org/zhwan/paddingoracle/verify?message=message", "0b6d9571b6a8d5fc06b03feef6d0696998fd1656cace8cdcad9b067da51ce18f980a2e0232f57a03400c95b676877720d371a1fa12ef37fdf270109faef487fa330850dfb87708894fc3a710d9581b89a9a43035903543080ac5b03b691c5ac71466f04bf6a7ec1ade6a1ab33e7da8ffb38c20a7073a5482857f92bbaaeef5ab9f30a1d4bafdf19bff450a542911fb8e"]
         }
     ]
 }
