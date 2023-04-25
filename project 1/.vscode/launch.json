@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/len_ext_attack.py",
             "console": "internalConsole",
-            "args": ["https://project1.eecs388.org/imadhav/lengthextension/api?token=4dddabb30493ef2f29a9ea6b82244d3f1b92c0e76402adafdd9cac0dd6db09eb&command=ClockPowerOff&command=NoOp&command=ClockPowerOn"]
+            "args": ["https://inlichtingendienst.be/resetMechanism?token=0a45f5e284bf931e69b0c19674633360104b6a0d328ed381ae6295776c5c36d8&commands=email=hoffcar"]
         },
         {
             "name": "Bleichenbacher",

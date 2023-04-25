@@ -11,38 +11,41 @@ from pysha256 import sha256, padding
 
 
 class URL:
-    def __init__(self):
+    def __init__(self, url: str):
         # prefix is the slice of the URL from "https://" to "token=", inclusive.
-        self.prefix = "https://inlichtingendienst.be/resetMechanism?token="
-        
-        self.token = "0a45f5e284bf931e69b0c19674633360104b6a0d328ed381ae6295776c5c36d8"
+        self.prefix = url[:url.find('=') + 1]
+        self.token = url[url.find('=') + 1:url.find('&')]
         # suffix starts at the first "command=" and goes to the end of the URL
-        self.suffix = "email=hoffcar13"
+        self.suffix = url[url.find('&') + 1:]
 
     def __str__(self) -> str:
-        return f'{self.prefix}{self.token}&commands={self.suffix}'
+        return f'{self.prefix}{self.token}&{self.suffix}'
 
     def __repr__(self) -> str:
         return f'{type(self).__name__}({str(self).__repr__()})'
 
 
 def main():
+    if len(sys.argv) < 2:
+        print(f"usage: {sys.argv[0]} URL_TO_EXTEND", file=sys.stderr)
+        sys.exit(-1)
 
-    url = URL()
+    url = URL(sys.argv[1])
     
-    padded_message_len = 8+len(url.suffix)+len(padding(8+len(url.suffix)))
+
+    url.prefix = "https://inlichtingendienst.be/resetMechanism?token="
+    url.token = "0a45f5e284bf931e69b0c19674633360104b6a0d328ed381ae6295776c5c36d8"
+    url.suffix = "commands=email=hoffcar"
+    padded_message_len = 8+len(url.suffix) + len(padding(8+len(url.suffix)))
     
     h = sha256(
         state=bytes.fromhex(url.token),
         count=padded_message_len,
     )
-
-    newlength = len(url.suffix) + len(padding(8+len(url.suffix))) + len("~email=zhwan@umich.edu")
-    newThings = '~email=zhwan@umich.edu' + str(newlength)
-    h.update(newThings.encode())
+    h.update('~email=test@umich.edu'.encode())
 
     url.token = h.hexdigest()
-    url.suffix += quote(padding(8+len(url.suffix))) + '~email=zhwan@umich.edu'
+    url.suffix += quote(padding(8+len(url.suffix))) + '~email=test@umich.edu'
     print(url)
 
 
